@@ -61,7 +61,7 @@
             window.location.href="<?= config('app.url') ?>foodcard_home";
 
           }else{
-            alert("invalid creadiejhgkug");
+            alert("invalid creadiejhgkugggghhhh");
           }
           // console.log(response);
           // alert("Save Complete");
