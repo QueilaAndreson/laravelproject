@@ -6,6 +6,7 @@
     <title>Document</title>
     <link href="<?php echo config('app.url'); ?>assets/css/bootstrap.min.css" rel="stylesheet" >
     <script src="<?php echo config('app.url'); ?>assets/js/bootstrap.bundle.min.js" ></script>
+    <script src="<?php echo config('app.url'); ?>assets/js/jquery-3.7.1.js"></script>
 
 </head>
 <body>

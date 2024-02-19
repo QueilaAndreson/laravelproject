@@ -8,10 +8,20 @@
     <link href="<?php echo config('app.url'); ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <script src="<?php echo config('app.url'); ?>assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?php echo config('app.url'); ?>assets/js/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
     <style>
         body {
             max-width:100%;
             overflow-x: hidden;
+            font-family: cursive;
+            background-color: #e6f4fa;
+        }
+        .card {
+          background-color: #e2f2f5;
+          text-align: center;
         }
     </style>
 </head>
@@ -23,14 +33,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" style="padding: 0% 0% 0% 30%;">
             <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="<?php echo config('app.url'); ?>nextpage">Our Menu</a>
-                <a class="nav-item nav-link" href="<?php echo config('app.url'); ?>nextpage">Veg Pizza</a>
-                <a class="nav-item nav-link" href="<?php echo config('app.url'); ?>nextpage">Non veg Pizza</a>
-                <a class="nav-item nav-link " href="<?php echo config('app.url'); ?>nextpage">Starter</a>
-                <a class="nav-item nav-link " href="<?php echo config('app.url'); ?>nextpage">Contact Us</a>
+                <a class="nav-item nav-link active" href="<?php echo config('app.url'); ?>vegpizza">Our Menu</a>
+                <a class="nav-item nav-link" href="<?php echo config('app.url'); ?>vegpizza">Veg</a>
+                <a class="nav-item nav-link" href="<?php echo config('app.url'); ?>vegpizza">Non veg</a>
+                <a class="nav-item nav-link " href="<?php echo config('app.url'); ?>vegpizza">Starter</a>
+                <a class="nav-item nav-link " href="<?php echo config('app.url'); ?>vegpizza">Contact </a>
                 <form class="form-inline" style="display : flex;">
                     <input class="form-control mr-sm-2" type="search" placeholder="Enter PIN code" aria-label="Enter PIN code">
-                    <button class="btn btn-outline-success my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-success my-sm-0" data-toggle="modal" data-target="#expecteddeliverytime" type="button">Search</button>
                 </form>
             </div>
         </div>
@@ -61,9 +71,9 @@
             <div class="card">
                 <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Veg Pizza</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-info">Go somewhere</a>
                 </div>
             </div>
         </div>
@@ -71,9 +81,9 @@
             <div class="card">
                 <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Non veg pizza</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-info">Go somewhere</a>
                 </div>
             </div>
         </div>
@@ -81,9 +91,9 @@
             <div class="card">
                 <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">Starters</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-info">Go somewhere</a>
                 </div>
             </div>
         </div>
@@ -91,17 +101,43 @@
             <div class="card">
                 <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">make your own pizza</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-info">Make mine</a>
                 </div>
             </div>
         </div>
     </div>
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#expecteddeliverytime" data-whatever="@mdo">Open modal for @mdo</button> --}}
+<div class="modal fade" id="expecteddeliverytime" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Expected delivery time 19 mints 30 secs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Today Message:</label>
+            <textarea class="form-control" id="message-text">ANYONE WHO SAYS THAT MONEY CANNOT BUY HAPPINESS HAS CLEARLY NEVER SPENT THEIR MONEY ON PIZZA.😍</textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        {{-- <button type="button" class="btn btn-primary">Send message</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
 
-
-    <h1>foodcard home</h1>
-    <h3>welcome <?php echo  session('user_name') ?></h3>
+    {{-- <h1>foodcard home</h1> --}}
+    <h3>welcome 
+      <?php echo  session('user_name') ?>
+    </h3>
  
     <!-- Footer -->
 <footer class="text-center text-lg-start text-secondary bg-dark">

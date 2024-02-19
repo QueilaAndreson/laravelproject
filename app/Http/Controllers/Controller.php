@@ -23,7 +23,7 @@ class Controller extends BaseController
     function register_post(Request $request)
     {
         $username = $request->post('name');
-        // echo $username;
+        echo $username;
         $userpassword = $request->post('password');
         $useremail = $request->post('email');
 
@@ -75,7 +75,21 @@ class Controller extends BaseController
 
         return view('foodcard_home_page');
     }
-    function nextpage(){
-        return view('nextpage');
+    function vegpizza(){
+        $data['vegpizza_items']=Food_model::all();
+        return view('vegpizza',$data);
+    }
+    public function addVegCartItems(Request $request){
+        $vegpizzaId = $request->vegpizzaId;
+        $vegpizzasessionId = $request->vegpizzasessionId;
+        // return $vegpizzaId;
+        // return $vegpizzasessionId;
+        // $insert = [
+        //     'cart_id' => $vegpizzaId,
+        //     'user_id' => $vegpizzasessionId,
+        // ];
+        // $FoodModal = new Food_model;
+        // $FoodModal -> insert_veg_cart($insert);
+
     }
 }

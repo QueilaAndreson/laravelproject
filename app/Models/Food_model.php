@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 class Food_model extends Model
 {
     use HasFactory;
+    protected $table ='vegpizza';
     function insert_users($insert)
     {
         DB::table('users')->insert($insert);

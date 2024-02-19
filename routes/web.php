@@ -20,4 +20,5 @@ Route::get('/register', [Controller::class,'register_page']);
 Route::get('/foodcard_home', [Controller::class,'foodcard_home_page']);
 Route::post('/register_post', [Controller::class,'register_post']);
 Route::post('/login_post', [Controller::class,'login_post']);
-Route::get('/nextpage',[Controller::class,'nextpage']);
+Route::get('/vegpizza',[Controller::class,'vegpizza']);
+Route::post('/addVegCartItems',[Controller::class,'addvegCartItems']);
