@@ -52,7 +52,7 @@
 
         },
         success: function(response) {
-
+          
           var data=JSON.parse(response);
           console.log(data);
           if(data.status=="success"){

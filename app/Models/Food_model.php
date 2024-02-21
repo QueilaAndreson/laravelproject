@@ -24,4 +24,32 @@ class Food_model extends Model
 
         return $results;
     }
+    function insert_veg_cart($insert,$vegpizzaId,$vegpizzasessionId)
+    {
+        // $checkUserCartDetails = DB::table('users_cart')
+        //     ->where('user_id',$vegpizzasessionId)
+        //     ->where('veg_id',$vegpizzaId)
+        //     ->first();
+
+        // // return $checkUserCartDetails;
+        // if($checkUserCartDetails==true)
+        // {
+        //     return 0;
+        // }
+        // else
+        // {
+        //     $usersCartInserted = DB::table('users_cart')
+        //         ->insert($insert);
+        //     return 1;
+        // }
+        
+    }
+    function show_added_cart($vegsessionId)
+    {
+            $checkUserCartDetails = DB::table('users_cart')
+        //    ->select('veg_id')
+            ->where('user_id',$vegsessionId)->get();
+
+            return $checkUserCartDetails;
+    }
 }

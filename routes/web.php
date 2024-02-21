@@ -22,3 +22,5 @@ Route::post('/register_post', [Controller::class,'register_post']);
 Route::post('/login_post', [Controller::class,'login_post']);
 Route::get('/vegpizza',[Controller::class,'vegpizza']);
 Route::post('/addVegCartItems',[Controller::class,'addvegCartItems']);
+Route::post('/cartButtons',[Controller::class,'cartButtons']);
+Route::post('/addVegLikes',[Controller::class,'addVegLikes']);

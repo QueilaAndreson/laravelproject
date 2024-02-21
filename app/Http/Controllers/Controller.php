@@ -75,21 +75,91 @@ class Controller extends BaseController
 
         return view('foodcard_home_page');
     }
-    function vegpizza(){
+    function vegpizza()
+    {
         $data['vegpizza_items']=Food_model::all();
+        $vegsessionId = session("user_id");
+       $FoodModal = new Food_model;
+        $responses=$FoodModal -> show_added_cart($vegsessionId);
+        $alreadyaddedVegID = [];
+        foreach($responses as $response)
+        {
+            if($response->veg_id!="")
+            {
+                array_push($alreadyaddedVegID,$response->veg_id);
+            }
+            // echo $response->veg_id;
+        }
+        
+        
+        $data['alreadyaddedids']= $alreadyaddedVegID;
         return view('vegpizza',$data);
     }
-    public function addVegCartItems(Request $request){
+    public function addVegCartItems(Request $request)
+    {
         $vegpizzaId = $request->vegpizzaId;
         $vegpizzasessionId = $request->vegpizzasessionId;
         // return $vegpizzaId;
         // return $vegpizzasessionId;
-        // $insert = [
-        //     'cart_id' => $vegpizzaId,
-        //     'user_id' => $vegpizzasessionId,
-        // ];
+        $insert = [
+            'veg_id' => $vegpizzaId,
+            'user_id' => $vegpizzasessionId,
+        ];
         // $FoodModal = new Food_model;
-        // $FoodModal -> insert_veg_cart($insert);
+        // $FoodModal -> insert_veg_cart($insert,$vegpizzaId,$vegpizzasessionId);
+        $checkUserCartDetails = DB::table('users_cart')
+            ->where('user_id',$vegpizzasessionId)
+            ->where('veg_id',$vegpizzaId)
+            ->first();
+
+        // return $checkUserCartDetails;
+        if($checkUserCartDetails==true)
+        {
+            return "Already exist";
+        }
+        else
+        {
+            $usersCartInserted = DB::table('users_cart')
+                ->insert($insert);
+            return "Item Added";
+        }
+        
+    }
+    public function cartButtons(Request $request)
+    {
+        // $vegpizzaId = $request->vegpizzaId;
+        $vegsessionId = $request->vegpizzasessionId;
+        $FoodModal = new Food_model;
+        $response=$FoodModal -> show_added_cart($vegsessionId);
+
+        // echo json_encode($response);
+        return $response;
+    }
+    public function addVegLikes(Request $request)
+    {
+        $vegpizzaId = $request->vegpizzaId;
+        $vegpizzasessionId = $request->vegpizzasessionId;
+        // return $vegpizzaId;
+        // return $vegpizzasessionId;
+        $insert = [
+            'veg_likes_id' => $vegpizzaId,
+            'user_likes_id' => $vegpizzasessionId,
+        ];
+        $checkUserLikeDetails = DB::table('users_likes')
+            ->where('user_likes_id',$vegpizzasessionId)
+            ->where('veg_likes_id',$vegpizzaId)
+            ->first();
+
+        // // return $checkUserLikeDetails;
+        if($checkUserLikeDetails==true)
+        {
+            return "Already exist";
+        }
+        else
+        {
+            DB::table('users_likes')->insert($insert);
+            return "Item Added";
+        }
 
     }
 }
