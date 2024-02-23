@@ -52,4 +52,11 @@ class Food_model extends Model
 
             return $checkUserCartDetails;
     }
+    function show_likes_button($vegsessionId)
+    {
+        $checkUserlikeDetails = DB::table('users_likes')
+        // ->select('veg_likes_id')
+        ->where('user_likes_id',$vegsessionId)->get();
+        return $checkUserlikeDetails;
+    }
 }

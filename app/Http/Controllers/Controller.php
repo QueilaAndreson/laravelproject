@@ -81,6 +81,8 @@ class Controller extends BaseController
         $vegsessionId = session("user_id");
        $FoodModal = new Food_model;
         $responses=$FoodModal -> show_added_cart($vegsessionId);
+        $likesresponses = $FoodModal -> show_likes_button($vegsessionId);
+        $alreadyaddedlikesID = [];
         $alreadyaddedVegID = [];
         foreach($responses as $response)
         {
@@ -88,12 +90,21 @@ class Controller extends BaseController
             {
                 array_push($alreadyaddedVegID,$response->veg_id);
             }
-            // echo $response->veg_id;
+            // echo $response->veg_id; 
+        }
+
+        foreach($likesresponses as $likeresponse)
+        {
+            if($likeresponse->veg_likes_id !="")
+            {
+                array_push($alreadyaddedlikesID,$likeresponse->veg_likes_id);
+            }
+            // echo $likeresponse->veg_likes_id;
         }
         
-        
+        $likeData['alreadylikedIds']=$alreadyaddedlikesID;
         $data['alreadyaddedids']= $alreadyaddedVegID;
-        return view('vegpizza',$data);
+        return view('vegpizza',$data,$likeData);
     }
     public function addVegCartItems(Request $request)
     {
@@ -125,12 +136,13 @@ class Controller extends BaseController
         }
         
     }
-    public function cartButtons(Request $request)
+    public function likeButtons(Request $request)
     {
         // $vegpizzaId = $request->vegpizzaId;
         $vegsessionId = $request->vegpizzasessionId;
         $FoodModal = new Food_model;
-        $response=$FoodModal -> show_added_cart($vegsessionId);
+        // $response=$FoodModal -> show_added_cart($vegsessionId);
+        $response=$FoodModal -> show_likes_button($vegsessionId);
 
         // echo json_encode($response);
         return $response;
