@@ -39,7 +39,7 @@ class Controller extends BaseController
 
         $FoodModal = new Food_model;
         $FoodModal->insert_users($insert);
-        return redirect('/');
+        return redirect('/login_page');
     }
     function login_post(Request $request)  //jhfkf
     {
@@ -105,6 +105,13 @@ class Controller extends BaseController
         $likeData['alreadylikedIds']=$alreadyaddedlikesID;
         $data['alreadyaddedids']= $alreadyaddedVegID;
         return view('vegpizza',$data,$likeData);
+    }
+    public function nonvegpizza()
+    {
+        $nonvegdata['nonVegPizzaDetails'] = Food_model::all();
+        $nonvegSessionID = session("user_id") ;
+        
+        return view("nonvegpizza");
     }
     public function addVegCartItems(Request $request)
     {
@@ -174,4 +181,5 @@ class Controller extends BaseController
         }
 
     }
+    
 }

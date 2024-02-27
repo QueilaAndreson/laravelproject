@@ -21,6 +21,7 @@
       <input type="password" class="form-control" id="password" placeholder="enter password" style="width:30%"><br>
       <input type="button" value="Submit" class="btn btn-primary" id="submit">
       <input type="button" value="Reset" class="btn btn-danger" id="reset">
+      <a href="<?php echo config('app.url'); ?>register" class="btn btn-info" id="register">Register</a>
 
     </div>
   </div>
@@ -28,6 +29,9 @@
 
 </body>
 <script>
+  $('#register').on('click',function(){
+
+  });
   $('#submit').on('click', function() {
     var email = $('#username').val();
     var password = $('#password').val();
@@ -61,7 +65,7 @@
             window.location.href="<?= config('app.url') ?>foodcard_home";
 
           }else{
-            alert("invalid creadiejhgkugggghhhh");
+            alert("Enter valid credentials");
           }
           // console.log(response);
           // alert("Save Complete");

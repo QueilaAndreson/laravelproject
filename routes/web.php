@@ -16,6 +16,7 @@ ceProvider and all of them will
 */
 
 Route::get('/', [Controller::class,'login_page']);
+Route::get('/login_page',[controller::class,'login_page']);
 Route::get('/register', [Controller::class,'register_page']);
 Route::get('/foodcard_home', [Controller::class,'foodcard_home_page']);
 Route::post('/register_post', [Controller::class,'register_post']);
@@ -24,3 +25,4 @@ Route::get('/vegpizza',[Controller::class,'vegpizza']);
 Route::post('/addVegCartItems',[Controller::class,'addvegCartItems']);
 Route::post('/likeButtons',[Controller::class,'likeButtons']);
 Route::post('/addVegLikes',[Controller::class,'addVegLikes']);
+Route::get('/nonvegpizza',[controller::class,'nonvegpizza']);

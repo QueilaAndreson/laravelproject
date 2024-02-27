@@ -11,8 +11,11 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+      
         body {
             max-width:100%;
             overflow-x: hidden;
@@ -26,8 +29,9 @@
     </style>
 </head>
 <body>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Pizza Zone</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,6 +49,9 @@
             </div>
         </div>
     </nav>
+    <h6>welcome 
+      <?php echo  session('user_name') ?>
+    </h6>
     {{-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -69,41 +76,41 @@
     <div class="row" style="padding: 1% 1% 1% 1%;">
         <div class="col-sm-6" style="width: 25%">
             <div class="card">
-                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/vegp1.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Veg Pizza</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-info">Go somewhere</a>
+                    <p class="card-text">Treat yourself to the best veggie pizza that’s completely customizable to your tastes!</p>
+                    <a href="<?php echo config('app.url'); ?>vegpizza" class="btn btn-info">Go Veg</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6" style="width: 25%">
             <div class="card">
-                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/non_veg/1.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Non veg pizza</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-info">Go somewhere</a>
+                    <p class="card-text"> Plan your next pizza party using foolproof recipe for making perfect non veg pizza from scratch every time!</p>
+                    <a href="<?php echo config('app.url'); ?>vegpizza" class="btn btn-info">Go Non_Veg</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6" style="width: 25%">
             <div class="card">
-                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/non_veg/12.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">Starters</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-info">Go somewhere</a>
+                    <p class="card-text">With over 50 mouth-watering dishes offering the best of Indian cuisines at unbeatable prices and is a must try!</p>
+                    <a href="<?php echo config('app.url'); ?>vegpizza" class="btn btn-info">Go Startes</a>
                 </div>
             </div>
         </div>
         <div class="col-sm-6" style="width: 25%">
             <div class="card">
-                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/p1.png" alt="Card image cap">
+                <img class="card-img-top" src="<?php echo config('app.url'); ?>assets/images/non_veg/11.png" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">make your own pizza</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-info">Make mine</a>
+                    <p class="card-text">Make your own pizza with your own choices by selecting toppings and everything ! </p>
+                    <a href="<?php echo config('app.url'); ?>vegpizza" class="btn btn-info">Make mine</a>
                 </div>
             </div>
         </div>
@@ -134,10 +141,7 @@
   </div>
 </div>
 
-    {{-- <h1>foodcard home</h1> --}}
-    <h3>welcome 
-      <?php echo  session('user_name') ?>
-    </h3>
+    {{-- {{-- <h1>foodcard home</h1> --} --}}
  
     <!-- Footer -->
 <footer class="text-center text-lg-start text-secondary bg-dark">
@@ -166,7 +170,7 @@
         <a href="" class="me-4 text-reset">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="" class="me-4 text-reset">
+        <a href="https://github.com/QueilaAndreson/laravelproject" class="me-4 text-reset">
           <i class="fab fa-github"></i>
         </a>
       </div>
@@ -186,8 +190,9 @@
               <i class="fas fa-gem me-3"></i>Pizza Zone
             </h6>
             <p>
-              Here you can use rows and columns to organize your footer content. Lorem ipsum
-              dolor sit amet, consectetur adipisicing elit.
+              
+            Let’s talk about pizza. If you’re a pizza lover, chances are the phrase “too much pie” seldom crosses your lips, and happily,
+            there’s a world of cheesy, saucy goodness out there, just waiting to tickle your taste buds. 
             </p>
           </div>
           <!-- Grid column -->
